@@ -79,7 +79,8 @@ class User:
         return f"{self.first_name} {self.last_name} logged out so number of active users is " \
             f"{User.active_users}"
 
-    def say_hi():
+    @classmethod
+    def say_hi(cls):
         """
         [Static method to say hi]
         """
