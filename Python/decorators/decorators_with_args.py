@@ -1,21 +1,18 @@
-"""
-[Just add args and kwargs]
-"""
-def shout(function):
-    def wrapper(*args, **kwargs):
-        return function(*args, **kwargs).upper()
-    return wrapper
+def ensure_first_arg(value):
+    def inner(function):
+        def wrapper(*args, **kwargs):
+            if args and args[0] != value:
+                raise ValueError(f"First arg needs to be {value}")
+            else:
+                return function(*args, **kwargs)
+        return wrapper
+    return inner
 
 
-@shout
-def greet(name):
-    return f"Hi, I'm {name}"
+@ensure_first_arg(10)
+def add_to_ten(num_1, num_2):
+    return num_1 + num_2
 
 
-@shout
-def order(main, side):
-    return f"Hi, I'd like to have {main} with the {side} on the side please."
-
-
-print(greet('Arun'))
-print(order('Masala Dose', 'Coffee'))
+print(add_to_ten(10, 20))
+print(add_to_ten(1, 20))
