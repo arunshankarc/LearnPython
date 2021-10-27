@@ -18,7 +18,7 @@ class Human:
         self.first = first
         self.last = last
         self.age = age
-		
+
     def __repr__(self):
         return f"Human named {self.first} {self.last} aged {self.age}"
 
