@@ -1,10 +1,14 @@
 """
 [Below code is a pseudocode for connection to db/api and retrying the same.]
 """
+
+
 def _return_no_parameters(db_api):
     if "db" not in db_api or "api" not in db_api:
-        print(f"Unknown parameter passed {db_api}, valid parameters are 'db' or 'api'")
+        print(
+            f"Unknown parameter passed {db_api}, valid parameters are 'db' or 'api'")
     print(f'Required parameters not found for connection to {db_api}')
+
 
 def retry_db_api(connect_to):
     """

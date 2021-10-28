@@ -5,6 +5,7 @@ another function (nested), then its higher order as well.]
 """
 from random import choice
 
+
 def square_cube(number, func):
     """[Return Square or cube i.e. pasing function as arguments]
 

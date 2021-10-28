@@ -1,6 +1,8 @@
 """
 [Just add args and kwargs]
 """
+
+
 def shout(function):
     def wrapper(*args, **kwargs):
         return function(*args, **kwargs).upper()

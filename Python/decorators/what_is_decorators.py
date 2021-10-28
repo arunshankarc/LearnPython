@@ -5,6 +5,8 @@
 @decorator
 def func(*args, **kwargs):
     pass
+
+
 # We're really doing:
 func = decorator(func)
 
@@ -13,5 +15,7 @@ func = decorator(func)
 @decorator_with_args(arg)
 def func(*args, **kwargs):
     pass
+
+
 # We're really doing:
 func = decorator_with_args(arg)(func)
