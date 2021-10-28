@@ -1,4 +1,5 @@
-"""[
+"""
+[
     There is a lot of memory saved by using generator expressions which returns the
     generator object than list.
 ]
