@@ -1,3 +1,11 @@
+"""
+Example on how to build json objects
+Read this to make python object json serializable -
+https://pynative.com/make-python-class-json-serializable/
+
+how to validate json with schema -
+https://pynative.com/python-json-validation/
+"""
 from typing import List
 from json import JSONEncoder
 import json
@@ -91,8 +99,11 @@ class PostProcessingOutput:
         self.rr_core_match = new_rr_core_match
 
     def to_dict(self) -> dict:
-        return {"@id": f"{self._id}", "reference": f"{self._reference}", 
+        return {"@id": f"{self._id}", "reference": f"{self._reference}",
         "rr_core_match": [self._rr_core_match]}
+
+    def __repr__(self):
+        return f"@id = {self._id}, reference={self._reference}, rr_core_match={self._rr_core_match}"
 
 
 class PostProcessingEncoder(JSONEncoder):
@@ -104,6 +115,9 @@ identifier1 = Identifier("EID", "84913598979")
 identifier2 = Identifier("parityId", "53674561602")
 rr_core_match = RrCoreMatch([identifier1.to_dict(), identifier2.to_dict()])
 post_processing_output = PostProcessingOutput("123", "</reference>", rr_core_match.to_dict())
+print(post_processing_output)
 print(PostProcessingEncoder().encode(post_processing_output.to_dict()))
 process_output = json.dumps(post_processing_output.to_dict(), cls=PostProcessingEncoder)
 print(process_output)
+with open("output.json", 'a', encoding='utf-8') as fd:
+    json.dump(post_processing_output.to_dict(), fd)
