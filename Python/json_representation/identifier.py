@@ -15,6 +15,7 @@ class Identifier:
     def __init__(self, type_data: str, value: str):
         self._type = type_data
         self._value = value
+        self._validation_output = True
 
     @property
     def type(self) -> str:
@@ -32,8 +33,16 @@ class Identifier:
     def value(self, new_value: str):
         self._value = new_value
 
+    # Add your validations here
+    def run_validations(self):
+        if isinstance(self._value, str) and isinstance(self._type, str):
+            self._validation_output = True
+            return True
+        self._validation_output = False
+        return False
+
     def to_dict(self) -> dict:
-        return {'type': self._type, '@value': self._value}
+        return {'type': self._type, '@value': self._value, 'validations': self._validation_output}
 
     def __repr__(self):
         return f"{self._type} : {self._value}"
@@ -113,6 +122,9 @@ class PostProcessingEncoder(JSONEncoder):
 
 identifier1 = Identifier("EID", "84913598979")
 identifier2 = Identifier("parityId", "53674561602")
+identifier3 = Identifier("EID", 1234)
+print(identifier3.run_validations())
+print(PostProcessingEncoder().encode(identifier3.to_dict()))
 rr_core_match = RrCoreMatch([identifier1.to_dict(), identifier2.to_dict()])
 post_processing_output = PostProcessingOutput("123", "</reference>", rr_core_match.to_dict())
 print(post_processing_output)
