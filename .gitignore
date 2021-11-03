@@ -6,3 +6,5 @@
 /venv
 /py
 /.vscode
+/flask_learning/learn_flaskrestful_db/data.db
+*pyc
