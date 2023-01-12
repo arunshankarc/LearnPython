@@ -1,0 +1,13 @@
+1) What is the difference between list and tuples
+
+2) Write a program which takes a number an returns sum of numbers.
+For example if number is 1000000 it should start from 1 until 999999 and sum every number.
+What is the fastest and efficient way? 
+
+3) Write a function my_for which is a most simplified version of for loop.
+For example, when my_for("Hello") or my_for([1,2,3,4,5]) is invoked it iterates and prints each char or digit
+
+4) Write a class which has polymorphism, inheritance and getters and setters.
+
+5) What is GIL? how is multi threading and multi processing achieved?
+
